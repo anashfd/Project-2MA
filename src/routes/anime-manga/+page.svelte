@@ -1,21 +1,33 @@
 <script lang="ts">
-  import { repository } from '$lib/core/repository';
+  import MediaCard from '$lib/components/MediaCard.svelte';
 
-  const request = repository.browse(['anime', 'manga']);
+  const filters = ['All', 'Anime', 'Manga', 'Manhwa', 'Manhua'];
+  let active = $state('All');
+
+  // Replace with your mock repository data
+  const items = [
+    { id: 1, title: 'Sample Title', cover: '', kind: 'Anime', subtitle: '12 episodes' }
+  ];
+
+  let visible = $derived(
+    active === 'All' ? items : items.filter((i) => i.kind === active)
+  );
 </script>
 
-{#await request}
-  <p>Loading...</p>
-{:then titles}
-  <div class="grid">
-    {#each titles as media}
-      <a class="card" href={`/media/${encodeURIComponent(media.id)}`}>
-        <div class="poster"></div>
-        <strong class="title">{media.title}</strong>
-        <small class="meta">{media.format} · {media.year ?? '?'}</small>
-      </a>
-    {/each}
-  </div>
-{:catch}
-  <p>Could not load titles.</p>
-{/await}
+<header>
+  <h1>Anime & Manga</h1>
+  <p>{visible.length} titles</p>
+</header>
+
+<div class="tabs">
+  {#each filters as f}
+    <button class:on={active === f} onclick={() => (active = f)}>{f}</button>
+  {/each}
+</div>
+
+<div class="grid">
+  {#each visible as item (item.id)}
+    <MediaCard title={item.title} cover={item.cover} subtitle={item.subtitle} />
+  {/each}
+</div>
+
