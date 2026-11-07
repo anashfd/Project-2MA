@@ -3,11 +3,11 @@
   let { children } = $props();
 
   const items = [
-    { href: '/anime-manga', label: 'Discover', icon: '✦' },
-    { href: '/anime-manga/library', label: 'My Library', icon: '▤' }
+    { href: '/anime-manga', label: 'Discover', icon: 'discover' as const },
+    { href: '/anime-manga/library', label: 'My Library', icon: 'library' as const }
   ];
 </script>
 
-<SectionShell title="Anime & Manga" base="/anime-manga" {items}>
+<SectionShell title="Anime & Manga" base="/anime-manga" theme="blue" {items}>
   {@render children()}
 </SectionShell>

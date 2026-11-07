@@ -3,11 +3,11 @@
   let { children } = $props();
 
   const items = [
-    { href: '/movies-series', label: 'Discover', icon: '✦' },
-    { href: '/movies-series/library', label: 'My Library', icon: '▤' }
+    { href: '/movies-series', label: 'Discover', icon: 'discover' as const },
+    { href: '/movies-series/library', label: 'My Library', icon: 'library' as const }
   ];
 </script>
 
-<SectionShell title="Movies & Series" base="/movies-series" {items}>
+<SectionShell title="Movies & Series" base="/movies-series" theme="orange" {items}>
   {@render children()}
 </SectionShell>

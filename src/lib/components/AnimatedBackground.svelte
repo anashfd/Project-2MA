@@ -11,7 +11,7 @@
     z-index: 0;
     overflow: hidden;
     pointer-events: none;
-    background: #0b1215;
+    background: var(--bg);
   }
 
   .glow {
@@ -23,20 +23,19 @@
   }
   .g1 {
     top: -30vmax; left: -22vmax;
-    background: radial-gradient(circle, rgba(45, 212, 191, 0.2), transparent 65%);
+    background: radial-gradient(circle, rgba(79, 140, 255, 0.24), transparent 65%);
     animation: float1 30s ease-in-out infinite alternate;
   }
   .g2 {
     bottom: -32vmax; right: -22vmax;
-    background: radial-gradient(circle, rgba(255, 138, 92, 0.2), transparent 65%);
+    background: radial-gradient(circle, rgba(255, 138, 61, 0.2), transparent 65%);
     animation: float2 36s ease-in-out infinite alternate;
   }
 
-  /* Halftone dots: one tile of travel = seamless loop */
   .dots {
     position: absolute;
     inset: -30px;
-    background-image: radial-gradient(rgba(244, 241, 234, 0.09) 1.3px, transparent 1.7px);
+    background-image: radial-gradient(rgba(243, 245, 250, 0.08) 1.3px, transparent 1.7px);
     background-size: 30px 30px;
     mask-image: radial-gradient(ellipse at center, black 25%, transparent 80%);
     animation: drift 8s linear infinite;

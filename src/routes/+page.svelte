@@ -6,7 +6,9 @@
 
 <div class="home">
   <header>
-    <span class="eyebrow">2MA</span>
+    <span class="eyebrow" aria-label="2MSA">
+  <span class="n">2</span><span class="m">M</span><span class="s">S</span><span class="a">A</span>
+</span>
     <h1>What are you tracking?</h1>
     <p class="lead">Pick a section to get started</p>
   </header>
@@ -119,35 +121,58 @@
     justify-content: center;
     gap: 48px;
     padding: 40px;
-    color: #f4f1ea;
+    color: var(--text);
   }
 
   header { text-align: center; }
   .eyebrow {
-    display: inline-block;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.3em;
-    color: #5eead4;
-    margin-bottom: 14px;
-  }
-  h1 { font-size: 2.6rem; font-weight: 800; letter-spacing: -0.04em; }
-  .lead { color: #8d9aa0; margin-top: 8px; }
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  margin-bottom: 14px;
+}
+.eyebrow .n { color: var(--text-dim); }
+ .eyebrow .m {
+  letter-spacing: 0;
+  margin-right: 0.3em;
+  background: linear-gradient(90deg, var(--blue) 20%, var(--orange) 80%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter:
+    drop-shadow(-4px 0 8px rgba(79, 140, 255, 0.55))
+    drop-shadow(4px 0 8px rgba(255, 138, 61, 0.55));
+}
+
+.eyebrow .s {
+  color: var(--orange);
+  text-shadow:
+    0 0 10px rgba(255, 138, 61, 0.6),
+    0 0 26px rgba(255, 138, 61, 0.3);
+}
+
+.eyebrow .a {
+  color: var(--blue);
+  text-shadow:
+    0 0 10px rgba(79, 140, 255, 0.65),
+    0 0 26px rgba(79, 140, 255, 0.3);
+}
 
   .choices { display: flex; gap: 28px; flex-wrap: wrap; justify-content: center; }
 
-  /* Per-card palette */
+  /* Per-card palette, from the shared tokens in app.css */
   .anime {
-    --accent: #5eead4;
-    --soft: #ccfbf1;
-    --tint: rgba(94, 234, 212, 0.1);
-    --line: rgba(94, 234, 212, 0.3);
+    --accent: var(--blue);
+    --soft: var(--blue-soft);
+    --tint: var(--blue-tint);
+    --line: var(--blue-line);
   }
   .movies {
-    --accent: #ff8a5c;
-    --soft: #ffe4d6;
-    --tint: rgba(255, 138, 92, 0.1);
-    --line: rgba(255, 138, 92, 0.3);
+    --accent: var(--orange);
+    --soft: var(--orange-soft);
+    --tint: var(--orange-tint);
+    --line: var(--orange-line);
   }
 
   .choice {
@@ -156,8 +181,8 @@
     min-height: 440px;
     padding: 36px;
     border-radius: 24px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    background: linear-gradient(160deg, var(--tint), transparent 55%), #111a1f;
+    border: 1px solid var(--border);
+    background: linear-gradient(160deg, var(--tint), transparent 55%), var(--surface);
     color: inherit;
     text-decoration: none;
     display: flex;
@@ -186,14 +211,14 @@
   .art { width: 100px; height: 100px; }
 
   .text h2 { font-size: 1.7rem; font-weight: 700; letter-spacing: -0.025em; }
-  .text p { color: #8d9aa0; margin-top: 6px; font-size: 0.95rem; }
+  .text p { color: var(--text-dim); margin-top: 6px; font-size: 0.95rem; }
 
   .tags { list-style: none; padding: 0; margin: 18px 0 0; display: flex; flex-wrap: wrap; gap: 8px; }
   .tags li {
     padding: 5px 12px;
     border-radius: 999px;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #a8b3b8;
+    color: var(--text-dim);
     font-size: 0.78rem;
     transition: color 0.25s, border-color 0.25s;
   }
@@ -216,15 +241,15 @@
   .choice:hover .go {
     background: var(--accent);
     border-color: var(--accent);
-    color: #0b1215;
+    color: var(--bg);
     transform: translateX(4px);
   }
 
   /* SVG colour classes */
   .tint { fill: var(--accent); fill-opacity: 0.1; }
-  .cream { fill: #f4f1ea; }
-  .ink { fill: #0b1215; }
-  .ink-stroke { stroke: #0b1215; }
+  .cream { fill: var(--text); }
+  .ink { fill: var(--bg); }
+  .ink-stroke { stroke: var(--bg); }
   .soft-fill { fill: var(--soft); }
   .soft-stroke { stroke: var(--soft); }
 
